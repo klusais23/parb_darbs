@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<ul>
+    {% for deposit in object_list %}
+    <li>
+        <p>
+
+        <a  href="deposit/{{deposit.id}}" >
+               {% csrf_token %}
+<!--        USER ID : {{id}}-->
+            Deposit: <strong>{{deposit.deposit}} </strong><br>
+            term: <strong>{{deposit.term}}</strong><br>
+            rate: {{deposit.rate}}<br>
+            interest: {{deposit.interest}}<br>
+
+        </a>
+
+
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+    <form action="deposit/new">
+        <input type="submit" , value="Add Deposit">
+    </form>
+
+</body>
+</html>

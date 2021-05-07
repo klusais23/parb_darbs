@@ -23,14 +23,14 @@ def add_deposit(request):
         deposit =  request.POST["deposit"]
         term = request.POST["term"]
         rate = request.POST["rate"]
-        result = Interest(deposit=deposit, term=term, rate=rate)
+        result = Interest(deposit=float(deposit), term=int(term), rate=float(rate))
         interest = result.interest()
 
         deposit = Deposit(
-            deposit= deposit,
-            term = term,
-            rate = rate,
-            interest = interest,
+            deposit=  request.POST["deposit"],
+            term = request.POST["term"],
+            rate = request.POST["rate"],
+            interest = str(interest),
         )
         print(Interest().interest())
         deposit.save()
